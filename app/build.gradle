@@ -49,4 +49,7 @@ dependencies {
     androidTestImplementation appTestDependencies.mockitoAndroid
     androidTestImplementation appTestDependencies.espresso
     androidTestImplementation appTestDependencies.espressoCore
+
+    implementation project(':domain')
+    implementation project(':data')
 }
