@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import android.widget.Toast
 
 /**
- * ViewExtensions
+ * ContextExtensions
  */
 
 /**
