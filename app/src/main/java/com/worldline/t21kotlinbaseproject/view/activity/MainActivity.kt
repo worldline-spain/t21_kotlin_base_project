@@ -6,6 +6,7 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import com.worldline.t21kotlinbaseproject.R
+import com.worldline.t21kotlinbaseproject.model.CategoryView
 import com.worldline.t21kotlinbaseproject.presenter.MainPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,20 +29,18 @@ class MainActivity : RootActivity<MainPresenter.View>(), MainPresenter.View {
     }
 
     override fun initializeUI() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        // Nothing to do yet
     }
 
     override fun registerListeners() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        // Nothing to do yet
     }
 
-    override fun showCategories() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showCategories(categories: List<CategoryView>) {
+        // Nothing to do yet
     }
 
-    override fun getCategories() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
+    override fun getCategories(): List<CategoryView> =
+            listOf(CategoryView(R.string.planets, R.drawable.worldline))
 
 }

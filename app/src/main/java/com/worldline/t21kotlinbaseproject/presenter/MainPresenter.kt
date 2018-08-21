@@ -1,6 +1,7 @@
 package com.worldline.t21kotlinbaseproject.presenter
 
 import com.worldline.t21kotlinbaseproject.error.ErrorHandler
+import com.worldline.t21kotlinbaseproject.model.CategoryView
 
 /**
  * MainPresenter.
@@ -11,7 +12,7 @@ class MainPresenter(view: MainPresenter.View, errorHandler: ErrorHandler) :
     private val categories = listOf<String>()
 
     override fun initialize() {
-        view.showCategories()
+        view.showCategories(view.getCategories())
     }
 
     override fun resume() {
@@ -27,8 +28,8 @@ class MainPresenter(view: MainPresenter.View, errorHandler: ErrorHandler) :
     }
 
     interface View : Presenter.View {
-        fun showCategories()
-        fun getCategories()
+        fun showCategories(categories: List<CategoryView>)
+        fun getCategories(): List<CategoryView>
     }
 
 }
