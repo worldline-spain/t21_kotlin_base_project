@@ -5,5 +5,10 @@
 
     //Categories
     <string name="planets">Planets</string>
+    <string name="people">People</string>
+    <string name="species">Species</string>
+    <string name="films">Films</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="starships">Starships</string>
 
 </resources>

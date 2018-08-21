@@ -1,6 +1,7 @@
 package com.worldline.t21kotlinbaseproject.presenter
 
 import com.worldline.t21kotlinbaseproject.error.ErrorHandler
+import com.worldline.t21kotlinbaseproject.model.CategoryType
 import com.worldline.t21kotlinbaseproject.model.CategoryView
 
 /**
@@ -12,7 +13,9 @@ class MainPresenter(view: MainPresenter.View, errorHandler: ErrorHandler) :
     private val categories = listOf<String>()
 
     override fun initialize() {
+        view.showProgress()
         view.showCategories(view.getCategories())
+        view.hideProgress()
     }
 
     override fun resume() {
@@ -27,9 +30,12 @@ class MainPresenter(view: MainPresenter.View, errorHandler: ErrorHandler) :
         // Nothing to do yet
     }
 
+    fun onCategoryClicked(category: CategoryView) = view.goToCategoryScreen(category.type)
+
     interface View : Presenter.View {
         fun showCategories(categories: List<CategoryView>)
         fun getCategories(): List<CategoryView>
+        fun goToCategoryScreen(categoryType: CategoryType)
     }
 
 }
