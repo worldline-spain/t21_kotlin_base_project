@@ -7,9 +7,9 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import com.worldline.t21kotlinbaseproject.R
-import com.worldline.t21kotlinbaseproject.extension.toast
 import com.worldline.t21kotlinbaseproject.model.CategoryType
 import com.worldline.t21kotlinbaseproject.model.CategoryView
+import com.worldline.t21kotlinbaseproject.navigator.navigateToListActivity
 import com.worldline.t21kotlinbaseproject.presenter.MainPresenter
 import com.worldline.t21kotlinbaseproject.view.adapter.CategoriesAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -63,8 +63,6 @@ class MainActivity : RootActivity<MainPresenter.View>(), MainPresenter.View {
                     CategoryView(R.string.vehicles, R.drawable.worldline, CategoryType.VEHICLES),
                     CategoryView(R.string.starships, R.drawable.worldline, CategoryType.STARSHIPS))
 
-    override fun goToCategoryScreen(categoryType: CategoryType) {
-        toast(categoryType.toString())
-    }
+    override fun goToCategoryScreen(categoryType: CategoryType) = navigateToListActivity(categoryType)
 
 }
