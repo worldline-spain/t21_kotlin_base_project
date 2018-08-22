@@ -4,9 +4,9 @@ import android.content.Context
 import com.worldline.t21kotlinbaseproject.R
 
 /**
- * T21ErrorHandler.
+ * AndroidErrorHandler.
  */
-class T21ErrorHandler(val context: Context) : ErrorHandler {
+class AndroidErrorHandler(val context: Context) : ErrorHandler {
     override fun convert(e: Exception): String =
             when (e) {
                 else -> context.getString(R.string.default_error)
