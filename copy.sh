@@ -86,5 +86,6 @@ else
 	sed -i "s/com.worldline.t21kotlinbaseproject/$packageName/g" "$path/app/build.gradle"
 	sed -i "s/com.worldline.t21kotlinbaseproject/$packageName/g" "$path/app/src/main/AndroidManifest.xml"
 	sed -i "s/T21KotlinBaseProject/$name/g" "$path/app/src/main/res/values/strings.xml"
+	sed -i "s/com.worldline.data/$packageDomain.$packageDomainName.data/g" "$path/data/src/main/AndroidManifest.xml"
 fi
 
