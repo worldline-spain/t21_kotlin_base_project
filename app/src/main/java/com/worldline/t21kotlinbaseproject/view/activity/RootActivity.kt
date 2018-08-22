@@ -1,6 +1,7 @@
 package com.worldline.t21kotlinbaseproject.view.activity
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
@@ -79,4 +80,10 @@ abstract class RootActivity<out V : Presenter.View> : AppCompatActivity(), Kodei
     override fun showProgress() = progress.showMe()
 
     override fun hideProgress() = progress.hideMe()
+
+    protected fun addFragment(containerViewId: Int, fragment: Fragment) {
+        val fragmentTransaction = this.supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(containerViewId, fragment)
+        fragmentTransaction.commit()
+    }
 }
