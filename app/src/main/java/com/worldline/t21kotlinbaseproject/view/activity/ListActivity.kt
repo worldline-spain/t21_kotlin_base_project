@@ -1,6 +1,5 @@
 package com.worldline.t21kotlinbaseproject.view.activity
 
-import android.support.v4.app.Fragment
 import android.view.View
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
@@ -9,6 +8,7 @@ import com.github.salomonbrys.kodein.provider
 import com.worldline.t21kotlinbaseproject.R
 import com.worldline.t21kotlinbaseproject.model.CategoryType
 import com.worldline.t21kotlinbaseproject.presenter.ListPresenter
+import com.worldline.t21kotlinbaseproject.view.fragment.planets.PlanetsListFragment
 import kotlinx.android.synthetic.main.activity_list.*
 
 /**
@@ -55,9 +55,7 @@ class ListActivity : RootActivity<ListPresenter.View>(), ListPresenter.View {
         // Nothing to do yet
     }
 
-    override fun showPlanetScreen() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun showPlanetScreen() = addFragment(R.id.container, PlanetsListFragment.newInstance())
 
     override fun showPeopleScreen() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
