@@ -32,9 +32,9 @@ replace_in_files(){
 			replace_in_files $entry $2 $3 $4
 		elif [[ -f $entry ]]; then
 			#echo "$entry is a file"
-			sed -i "s/com.worldline.t21kotlinbaseproject/$4/g" $entry
-			sed -i "s/com.worldline.domain/$2.$3.domain/g" $entry
-			sed -i "s/com.worldline.data/$2.$3.data/g" $entry
+			sed -i '' "s/com.worldline.t21kotlinbaseproject/$4/g" $entry
+			sed -i '' "s/com.worldline.domain/$2.$3.domain/g" $entry
+			sed -i '' "s/com.worldline.data/$2.$3.data/g" $entry
 		else
 		    echo "$entry is not valid"
 		fi
@@ -83,9 +83,9 @@ else
 	replace_in_files "$path/data/src/test/java/" $packageDomain $packageDomainName $packageName
 
 
-	sed -i "s/com.worldline.t21kotlinbaseproject/$packageName/g" "$path/app/build.gradle"
-	sed -i "s/com.worldline.t21kotlinbaseproject/$packageName/g" "$path/app/src/main/AndroidManifest.xml"
-	sed -i "s/T21KotlinBaseProject/$name/g" "$path/app/src/main/res/values/strings.xml"
-	sed -i "s/com.worldline.data/$packageDomain.$packageDomainName.data/g" "$path/data/src/main/AndroidManifest.xml"
+	sed -i '' "s/com.worldline.t21kotlinbaseproject/$packageName/g" "$path/app/build.gradle"
+	sed -i '' "s/com.worldline.t21kotlinbaseproject/$packageName/g" "$path/app/src/main/AndroidManifest.xml"
+	sed -i '' "s/T21KotlinBaseProject/$name/g" "$path/app/src/main/res/values/strings.xml"
+	sed -i '' "s/com.worldline.data/$packageDomain.$packageDomainName.data/g" "$path/data/src/main/AndroidManifest.xml"
 fi
 
