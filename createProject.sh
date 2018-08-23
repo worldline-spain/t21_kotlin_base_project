@@ -1,6 +1,6 @@
-if [ $# -ne 2 ]
+if [ $# -ne 3 ]
 then
-	echo "Please, enter the project and package name as parameter: createProject.sh PROJECT_NAME PACKAGE_DOMAIN.PACKAGE_NAME.PACKAGE_SUFIX"
+	echo "Please, enter the project and package name as parameter: createProject.sh PROJECT_NAME PACKAGE_DOMAIN.PACKAGE_NAME.PACKAGE_SUFIX OS_BASH: GIT, OSX"
 else
 	git clone https://vcs1.tempos21.com/scm/git/t21_kotlin_android_base_project &
 	PID=$!
@@ -10,6 +10,9 @@ else
 	git checkout feature/architecture
 	PID=$!
 	wait $PID
-	sh copy.sh $1 $2
+	if [ $3 = "OSX" ]; then
+		sh copy_osx_bash.sh $1 $2
+	else
+		sh copy_git_bash.sh $1 $2
 	rm -rf $path
 fi
