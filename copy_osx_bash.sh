@@ -3,7 +3,8 @@ clear(){
 	rm *iml
 	rm local.properties
 	rm -rf .idea
-	rm copy.sh
+	rm copy_git_bash.sh
+	rm copy_osx_bash.sh
 	rm -rf build/
 	cd "$1/app"
 	rm -rf build/

@@ -14,5 +14,6 @@ else
 		sh copy_osx_bash.sh $1 $2
 	else
 		sh copy_git_bash.sh $1 $2
+	fi
 	rm -rf $path
 fi
