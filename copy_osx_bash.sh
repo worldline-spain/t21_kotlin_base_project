@@ -5,6 +5,7 @@ clear(){
 	rm -rf .idea
 	rm copy_git_bash.sh
 	rm copy_osx_bash.sh
+	rm createProject.sh
 	rm -rf build/
 	cd "$1/app"
 	rm -rf build/
