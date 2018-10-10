@@ -11,14 +11,15 @@ import io.reactivex.observers.DisposableMaybeObserver
 abstract class MaybeInteractor<T : Any>(private val executor: Executor,
                                         private val compositeDisposable: CompositeDisposable = CompositeDisposable()) {
 
-    fun execute(onSuccess: (T) -> Unit,
-                onEmpty: () -> Unit,
-                onError: (Throwable) -> Unit): Maybe<T> {
-        val maybe = buildMaybe()
+    protected fun execute(onSuccess: (T) -> Unit,
+                          onEmpty: () -> Unit,
+                          onError: (Throwable) -> Unit,
+                          maybe: Maybe<T>): Maybe<T> {
+        val maybeWithSchedulers = maybe
                 .subscribeOn(executor.new())
                 .observeOn(executor.main())
 
-        compositeDisposable.add(maybe
+        compositeDisposable.add(maybeWithSchedulers
                 .subscribeWith(object : DisposableMaybeObserver<T>() {
                     override fun onError(e: Throwable) {
                         onError(e)
@@ -33,12 +34,14 @@ abstract class MaybeInteractor<T : Any>(private val executor: Executor,
                     }
                 }))
 
-        return maybe
+        return maybeWithSchedulers
     }
 
     fun clear() {
         compositeDisposable.clear()
     }
 
-    abstract fun buildMaybe(): Maybe<T>
+    abstract fun execute(onSuccess: (T) -> Unit,
+                         onEmpty: () -> Unit,
+                         onError: (Throwable) -> Unit)
 }

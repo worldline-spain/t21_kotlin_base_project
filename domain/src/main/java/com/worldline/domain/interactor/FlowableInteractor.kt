@@ -11,14 +11,15 @@ import io.reactivex.subscribers.DisposableSubscriber
 abstract class FlowableInteractor<T : Any>(private val executor: Executor,
                                            private val compositeDisposable: CompositeDisposable = CompositeDisposable()) {
 
-    fun execute(onNext: (T) -> Unit,
-                onComplete: () -> Unit,
-                onError: (Throwable) -> Unit): Flowable<T> {
-        val flowable = buildFlowable()
+    protected fun execute(onNext: (T) -> Unit,
+                          onComplete: () -> Unit,
+                          onError: (Throwable) -> Unit,
+                          flowable: Flowable<T>): Flowable<T> {
+        val flowableWithSchedulers = flowable
                 .subscribeOn(executor.new())
                 .observeOn(executor.main())
 
-        compositeDisposable.add(flowable
+        compositeDisposable.add(flowableWithSchedulers
                 .subscribeWith(object : DisposableSubscriber<T>() {
                     override fun onComplete() {
                         onComplete()
@@ -34,12 +35,14 @@ abstract class FlowableInteractor<T : Any>(private val executor: Executor,
 
                 }))
 
-        return flowable
+        return flowableWithSchedulers
     }
 
     fun clear() {
         compositeDisposable.clear()
     }
 
-    abstract fun buildFlowable(): Flowable<T>
+    abstract fun execute(onNext: (T) -> Unit,
+                         onComplete: () -> Unit,
+                         onError: (Throwable) -> Unit)
 }
