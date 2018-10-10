@@ -36,6 +36,4 @@ abstract class SingleInteractor<T : Any>(private val executor: Executor,
     fun clear() {
         compositeDisposable.clear()
     }
-
-    abstract fun execute(onSuccess: (T) -> Unit, onError: (Throwable) -> Unit)
 }

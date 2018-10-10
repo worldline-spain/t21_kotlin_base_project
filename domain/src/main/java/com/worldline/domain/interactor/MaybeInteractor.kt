@@ -40,8 +40,4 @@ abstract class MaybeInteractor<T : Any>(private val executor: Executor,
     fun clear() {
         compositeDisposable.clear()
     }
-
-    abstract fun execute(onSuccess: (T) -> Unit,
-                         onEmpty: () -> Unit,
-                         onError: (Throwable) -> Unit)
 }

@@ -36,7 +36,4 @@ abstract class CompletableInteractor(private val executor: Executor,
     fun clear() {
         compositeDisposable.clear()
     }
-
-    abstract fun execute(onComplete: () -> Unit,
-                         onError: (Throwable) -> Unit)
 }

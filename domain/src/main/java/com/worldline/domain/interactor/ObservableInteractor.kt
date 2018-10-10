@@ -41,8 +41,4 @@ abstract class ObservableInteractor<T : Any>(private val executor: Executor,
     fun clear() {
         compositeDisposable.clear()
     }
-
-    abstract fun execute(onNext: (T) -> Unit,
-                         onComplete: () -> Unit,
-                         onError: (Throwable) -> Unit)
 }
