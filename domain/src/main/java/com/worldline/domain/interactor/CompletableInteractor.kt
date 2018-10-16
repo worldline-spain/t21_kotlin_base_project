@@ -11,13 +11,14 @@ import io.reactivex.observers.DisposableCompletableObserver
 abstract class CompletableInteractor(private val executor: Executor,
                                      private val compositeDisposable: CompositeDisposable = CompositeDisposable()) {
 
-    fun execute(onComplete: () -> Unit,
-                onError: (Throwable) -> Unit): Completable {
-        val completable = buildCompletable()
+    protected fun execute(onComplete: () -> Unit,
+                          onError: (Throwable) -> Unit,
+                          completable: Completable): Completable {
+        val completableWithSchedulers = completable
                 .subscribeOn(executor.new())
                 .observeOn(executor.main())
 
-        compositeDisposable.add(completable
+        compositeDisposable.add(completableWithSchedulers
                 .subscribeWith(object : DisposableCompletableObserver() {
                     override fun onComplete() {
                         onComplete()
@@ -29,12 +30,10 @@ abstract class CompletableInteractor(private val executor: Executor,
 
                 }))
 
-        return completable
+        return completableWithSchedulers
     }
 
     fun clear() {
         compositeDisposable.clear()
     }
-
-    abstract fun buildCompletable(): Completable
 }

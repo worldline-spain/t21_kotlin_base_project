@@ -13,12 +13,13 @@ abstract class ObservableInteractor<T : Any>(private val executor: Executor,
 
     protected fun execute(onNext: (T) -> Unit,
                           onComplete: () -> Unit,
-                          onError: (Throwable) -> Unit): Observable<T> {
-        val observable = buildObservable()
+                          onError: (Throwable) -> Unit,
+                          observable: Observable<T>): Observable<T> {
+        val observableWithSchedulers = observable
                 .subscribeOn(executor.new())
                 .observeOn(executor.main())
 
-        compositeDisposable.add(observable
+        compositeDisposable.add(observableWithSchedulers
                 .subscribeWith(object : DisposableObserver<T>() {
                     override fun onComplete() {
                         onComplete()
@@ -34,12 +35,10 @@ abstract class ObservableInteractor<T : Any>(private val executor: Executor,
 
                 }))
 
-        return observable
+        return observableWithSchedulers
     }
 
     fun clear() {
         compositeDisposable.clear()
     }
-
-    abstract fun buildObservable(): Observable<T>
 }
