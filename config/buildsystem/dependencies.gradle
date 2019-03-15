@@ -1,0 +1,92 @@
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        google()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+ext {
+    //Android
+    androidCompileSdkVersion = 28
+    androidMinSdkVersion = 17
+    androidTargetSdkVersion = 28
+
+    versionCode = 1
+    versionName = "0.0.0"
+
+    //Libraries
+    androidxVersion = '1.0.0'
+    glideVersion = '4.7.1'
+    permissionsVersion = '3.0.0'
+
+    //Frameworks
+    retrofitVersion = '2.3.0'
+    okthttpVersion = '3.9.1'
+    rxJavaVersion = '2.2.7'
+    rxAndroidVersion = '2.1.1'
+    rxJavaCallAdapterVersion = '2.3.0'
+    crashlyticsVersion = '2.9.3'
+
+    //Testing
+    robolectricVersion = '4.2'
+    jUnitVersion = '4.12'
+    mockitoVersion = '2.25.0'
+    mockitoKotlinVersion = '2.1.0'
+    espressoVersion = '1.1.0'
+    espressoCoreVersion = '3.1.0'
+
+    //Kotlin
+    kodeinVersion = '6.1.0'
+
+    applicationDependencies = [
+            appCompat_v7            : "androidx.appcompat:appcompat:${androidxVersion}",
+            support_v4              : "androidx.legacy:legacy-support-v4:${androidxVersion}",
+            cardView                : "androidx.cardview:cardview:${androidxVersion}",
+            design                  : "com.google.android.material:material:${androidxVersion}",
+            kodein                  : "com.github.salomonbrys.kodein:kodein:${kodeinVersion}",
+            kodeinAndroid           : "com.github.salomonbrys.kodein:kodein-android:${kodeinVersion}",
+            rxJava                  : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid               : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            glide                   : "com.github.bumptech.glide:glide:${glideVersion}",
+            glideAnnotationProcessor: "com.github.bumptech.glide:compiler:${glideVersion}",
+            permissions             : "pub.devrel:easypermissions:${permissionsVersion}",
+            crashlytics             : "com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}@aar"
+    ]
+
+    applicationTestDependencies = [
+            jUnit          : "junit:junit:${jUnitVersion}",
+            mockito        : "org.mockito:mockito-inline:${mockitoVersion}",
+            mockitoAndroid : "org.mockito:mockito-android:${mockitoVersion}",
+            mockitoKotlin  : "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
+            roboelectric   : "org.robolectric:robolectric:${robolectricVersion}",
+            espressoCore   : "androidx.test.espresso:espresso-core:${espressoCoreVersion}",
+            espresso       : "androidx.test:runner:${espressoVersion}",
+            espressoContrib: "androidx.test.espresso:espresso-contrib:${espressoCoreVersion}"
+    ]
+
+    dataDependencies = [
+            retrofit          : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitGson      : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            okthttp           : "com.squareup.okhttp3:okhttp:${okthttpVersion}",
+            loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${okthttpVersion}",
+            rxJavaCallAdapter : "com.squareup.retrofit2:adapter-rxjava2:${rxJavaCallAdapterVersion}",
+            rxJava            : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid         : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
+    ]
+
+    dataTestDependencies = [
+            jUnit  : "junit:junit:${jUnitVersion}",
+            mockito: "org.mockito:mockito-inline:${mockitoVersion}"
+    ]
+
+    domainDependencies = [
+            rxJava: "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
+    ]
+
+    domainTestDependencies = [
+            jUnit: "junit:junit:${jUnitVersion}"
+    ]
+
+}

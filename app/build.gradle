@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    defaultConfig {
+        applicationId "com.worldline.t21kotlinbaseproject"
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.androidTargetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+        }
+        release {
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def appDependencies = rootProject.ext.applicationDependencies
+    def appTestDependencies = rootProject.ext.applicationTestDependencies
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation appDependencies.appCompat_v7
+    implementation appDependencies.design
+    implementation appDependencies.cardView
+
+    implementation appDependencies.glide
+
+    implementation appDependencies.permissions
+
+    implementation appDependencies.kodein
+    implementation appDependencies.kodeinAndroid
+
+    implementation appDependencies.rxJava
+    implementation appDependencies.rxAndroid
+
+    testImplementation appTestDependencies.jUnit
+    testImplementation appTestDependencies.mockito
+
+    androidTestImplementation appTestDependencies.mockitoAndroid
+    androidTestImplementation appTestDependencies.espresso
+    androidTestImplementation appTestDependencies.espressoCore
+
+    implementation project(':domain')
+    implementation project(':data')
+}
