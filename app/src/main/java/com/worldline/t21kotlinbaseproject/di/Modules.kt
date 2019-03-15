@@ -6,7 +6,7 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.singleton
 import com.worldline.domain.executor.Executor
 import com.worldline.t21kotlinbaseproject.error.ErrorHandler
-import com.worldline.t21kotlinbaseproject.error.T21ErrorHandler
+import com.worldline.t21kotlinbaseproject.error.AndroidErrorHandler
 import com.worldline.t21kotlinbaseproject.executor.RxExecutor
 
 /**
@@ -15,7 +15,7 @@ import com.worldline.t21kotlinbaseproject.executor.RxExecutor
 fun appModule(context: Context) = Kodein.Module {
     bind<Context>() with singleton { context }
     bind<Executor>() with singleton { RxExecutor() }
-    bind<ErrorHandler>() with singleton { T21ErrorHandler(context = context) }
+    bind<ErrorHandler>() with singleton { AndroidErrorHandler(context = context) }
 }
 
 val domainModule = Kodein.Module {
