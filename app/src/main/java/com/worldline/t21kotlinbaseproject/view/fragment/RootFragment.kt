@@ -1,43 +1,37 @@
 package com.worldline.t21kotlinbaseproject.view.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.github.salomonbrys.kodein.Kodein
-import com.github.salomonbrys.kodein.KodeinInjected
-import com.github.salomonbrys.kodein.KodeinInjector
-import com.github.salomonbrys.kodein.lazy
+import androidx.fragment.app.Fragment
 import com.worldline.t21kotlinbaseproject.extension.toast
 import com.worldline.t21kotlinbaseproject.presenter.Presenter
-import com.worldline.t21kotlinbaseproject.view.activity.RootActivity
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.subKodein
+import org.kodein.di.android.x.kodein
 
 
 /**
  * RootFragment
  */
-abstract class RootFragment<out V : Presenter.View> : Fragment(), KodeinInjected, Presenter.View {
+abstract class RootFragment<out V : Presenter.View> : Fragment(), KodeinAware, Presenter.View {
 
     abstract val presenter: Presenter<V>
 
     abstract val layoutResourceId: Int
 
-    override val injector = KodeinInjector()
-
     abstract val fragmentModule: Kodein.Module
 
-    val kodein by Kodein.lazy {
-        extend((activity as RootActivity<*>).kodein)
+    override val kodein by subKodein(kodein()) {
         import(fragmentModule)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        initializeDI()
         initializeUI()
         registerListeners()
 
@@ -60,10 +54,6 @@ abstract class RootFragment<out V : Presenter.View> : Fragment(), KodeinInjected
     override fun onDestroy() {
         super.onDestroy()
         presenter.destroy()
-    }
-
-    private fun initializeDI() {
-        inject(kodein)
     }
 
     abstract fun initializeUI()

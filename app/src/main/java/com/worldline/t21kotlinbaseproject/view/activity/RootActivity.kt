@@ -1,23 +1,22 @@
 package com.worldline.t21kotlinbaseproject.view.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
-import com.github.salomonbrys.kodein.Kodein
-import com.github.salomonbrys.kodein.KodeinInjected
-import com.github.salomonbrys.kodein.KodeinInjector
-import com.github.salomonbrys.kodein.lazy
+import androidx.appcompat.app.AppCompatActivity
 import com.worldline.t21kotlinbaseproject.extension.hideMe
 import com.worldline.t21kotlinbaseproject.extension.showMe
 import com.worldline.t21kotlinbaseproject.extension.toast
 import com.worldline.t21kotlinbaseproject.presenter.Presenter
-import com.worldline.t21kotlinbaseproject.view.app.App
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.kodein
+import org.kodein.di.android.subKodein
 
 /**
  * RootActivity
  */
-abstract class RootActivity<out V : Presenter.View> : AppCompatActivity(), KodeinInjected, Presenter.View {
+abstract class RootActivity<out V : Presenter.View> : AppCompatActivity(), KodeinAware, Presenter.View {
 
     abstract val progress: View
 
@@ -25,12 +24,9 @@ abstract class RootActivity<out V : Presenter.View> : AppCompatActivity(), Kodei
 
     abstract val layoutResourceId: Int
 
-    override val injector = KodeinInjector()
-
     abstract val activityModule: Kodein.Module
 
-    val kodein by Kodein.lazy {
-        extend((application as App).kodein)
+    override val kodein by subKodein(kodein()) {
         import(activityModule)
     }
 
@@ -38,7 +34,6 @@ abstract class RootActivity<out V : Presenter.View> : AppCompatActivity(), Kodei
         super.onCreate(savedInstanceState)
         setContentView(layoutResourceId)
 
-        initializeDI()
         initializeUI()
         registerListeners()
 
@@ -58,10 +53,6 @@ abstract class RootActivity<out V : Presenter.View> : AppCompatActivity(), Kodei
     override fun onDestroy() {
         super.onDestroy()
         presenter.destroy()
-    }
-
-    private fun initializeDI() {
-        inject(kodein)
     }
 
     abstract fun initializeUI()
