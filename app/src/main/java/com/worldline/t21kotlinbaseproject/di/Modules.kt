@@ -3,8 +3,8 @@ package com.worldline.t21kotlinbaseproject.di
 import android.content.Context
 import org.kodein.di.Kodein
 import com.worldline.domain.executor.Executor
-import com.worldline.t21kotlinbaseproject.error.ErrorHandler
 import com.worldline.t21kotlinbaseproject.error.AndroidErrorHandler
+import com.worldline.t21kotlinbaseproject.error.ErrorHandler
 import com.worldline.t21kotlinbaseproject.executor.RxExecutor
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.singleton
