@@ -5,8 +5,8 @@ import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.singleton
 import com.worldline.domain.executor.Executor
-import com.worldline.t21kotlinbaseproject.error.ErrorHandler
 import com.worldline.t21kotlinbaseproject.error.AndroidErrorHandler
+import com.worldline.t21kotlinbaseproject.error.ErrorHandler
 import com.worldline.t21kotlinbaseproject.executor.RxExecutor
 
 /**
