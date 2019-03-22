@@ -41,8 +41,7 @@ ext {
     kodeinVersion = '6.1.0'
 
     applicationDependencies = [
-            appCompat_v7            : "androidx.appcompat:appcompat:${androidxVersion}",
-            support_v4              : "androidx.legacy:legacy-support-v4:${androidxVersion}",
+            appCompat               : "androidx.appcompat:appcompat:${androidxVersion}",
             cardView                : "androidx.cardview:cardview:${androidxVersion}",
             design                  : "com.google.android.material:material:${androidxVersion}",
             kodein                  : "org.kodein.di:kodein-di-generic-jvm:${kodeinVersion}",
@@ -62,7 +61,7 @@ ext {
             mockitoKotlin  : "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
             roboelectric   : "org.robolectric:robolectric:${robolectricVersion}",
             espressoCore   : "androidx.test.espresso:espresso-core:${espressoCoreVersion}",
-            espresso       : "androidx.test:runner:${espressoVersion}",
+            espresso       : "androidx.test.ext:junit:${espressoVersion}",
             espressoContrib: "androidx.test.espresso:espresso-contrib:${espressoCoreVersion}"
     ]
 
