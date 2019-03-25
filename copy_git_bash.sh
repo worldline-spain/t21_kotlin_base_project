@@ -3,7 +3,9 @@ clear(){
 	rm *iml
 	rm local.properties
 	rm -rf .idea
-	rm copy.sh
+	rm copy_git_bash.sh
+	rm copy_osx_bash.sh
+	rm createProject.sh
 	rm -rf build/
 	cd "$1/app"
 	rm -rf build/
@@ -81,7 +83,6 @@ else
 	replace_in_files "$path/data/src/androidTest/java/" $packageDomain $packageDomainName $packageName
 	replace_in_files "$path/data/src/main/java/" $packageDomain $packageDomainName $packageName
 	replace_in_files "$path/data/src/test/java/" $packageDomain $packageDomainName $packageName
-
 
 	sed -i "s/com.worldline.t21kotlinbaseproject/$packageName/g" "$path/app/build.gradle"
 	sed -i "s/com.worldline.t21kotlinbaseproject/$packageName/g" "$path/app/src/main/AndroidManifest.xml"
