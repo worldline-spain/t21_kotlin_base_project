@@ -1,8 +1,8 @@
 package com.worldline.t21kotlinbaseproject.extension
 
 import android.content.Context
-import android.support.v4.app.Fragment
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 
 /**
  * ContextExtensions

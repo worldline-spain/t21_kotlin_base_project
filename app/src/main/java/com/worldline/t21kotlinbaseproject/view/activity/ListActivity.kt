@@ -1,15 +1,15 @@
 package com.worldline.t21kotlinbaseproject.view.activity
 
 import android.view.View
-import com.github.salomonbrys.kodein.Kodein
-import com.github.salomonbrys.kodein.bind
-import com.github.salomonbrys.kodein.instance
-import com.github.salomonbrys.kodein.provider
 import com.worldline.t21kotlinbaseproject.R
 import com.worldline.t21kotlinbaseproject.model.CategoryType
 import com.worldline.t21kotlinbaseproject.presenter.ListPresenter
 import com.worldline.t21kotlinbaseproject.view.fragment.planets.PlanetsListFragment
 import kotlinx.android.synthetic.main.activity_list.*
+import org.kodein.di.Kodein
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.instance
+import org.kodein.di.generic.provider
 
 /**
  * ListActivity.
@@ -26,7 +26,7 @@ class ListActivity : RootActivity<ListPresenter.View>(), ListPresenter.View {
 
     override val layoutResourceId: Int = R.layout.activity_list
 
-    override val activityModule: Kodein.Module = Kodein.Module {
+    override val activityModule: Kodein.Module = Kodein.Module("activityModule") {
         bind<ListPresenter>() with provider {
             ListPresenter(view = this@ListActivity,
                     errorHandler = instance())
