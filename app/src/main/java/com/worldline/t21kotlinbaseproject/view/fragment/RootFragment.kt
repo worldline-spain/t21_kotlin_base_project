@@ -35,25 +35,15 @@ abstract class RootFragment<out V : Presenter.View> : Fragment(), KodeinAware, P
         initializeUI()
         registerListeners()
 
-        presenter.initialize()
+        presenter.attach()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             inflater.inflate(layoutResourceId, container, false)
 
-    override fun onResume() {
-        super.onResume()
-        presenter.resume()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        presenter.stop()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
-        presenter.destroy()
+        presenter.detach()
     }
 
     abstract fun initializeUI()

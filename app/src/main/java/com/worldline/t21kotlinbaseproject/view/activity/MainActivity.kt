@@ -32,8 +32,11 @@ class MainActivity : RootActivity<MainPresenter.View>(), MainPresenter.View {
 
     override val activityModule: Kodein.Module = Kodein.Module(ACTIVITY_MODULE) {
         bind<MainPresenter>() with provider {
-            MainPresenter(view = this@MainActivity,
-                    errorHandler = instance())
+            MainPresenter(
+                    view = this@MainActivity,
+                    errorHandler = instance(),
+                    executor = instance()
+            )
         }
     }
 

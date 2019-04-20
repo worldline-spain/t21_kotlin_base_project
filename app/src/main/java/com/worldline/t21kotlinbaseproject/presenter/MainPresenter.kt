@@ -1,32 +1,25 @@
 package com.worldline.t21kotlinbaseproject.presenter
 
 import com.worldline.t21kotlinbaseproject.error.ErrorHandler
+import com.worldline.t21kotlinbaseproject.executor.Executor
 import com.worldline.t21kotlinbaseproject.model.CategoryType
 import com.worldline.t21kotlinbaseproject.model.CategoryView
 
 /**
  * MainPresenter.
  */
-class MainPresenter(view: MainPresenter.View, errorHandler: ErrorHandler) :
-        Presenter<MainPresenter.View>(errorHandler = errorHandler, view = view) {
+class MainPresenter(view: MainPresenter.View, errorHandler: ErrorHandler, executor: Executor) :
+        Presenter<MainPresenter.View>(errorHandler = errorHandler, executor = executor, view = view) {
 
     private val categories = listOf<String>()
 
-    override fun initialize() {
+    override fun attach() {
         view.showProgress()
         view.showCategories(view.getCategories())
         view.hideProgress()
     }
 
-    override fun resume() {
-        // Nothing to do yet
-    }
-
-    override fun stop() {
-        // Nothing to do yet
-    }
-
-    override fun destroy() {
+    override fun detach() {
         // Nothing to do yet
     }
 
