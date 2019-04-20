@@ -24,9 +24,6 @@ ext {
     //Frameworks
     retrofitVersion = '2.3.0'
     okthttpVersion = '3.9.1'
-    rxJavaVersion = '2.2.7'
-    rxAndroidVersion = '2.1.1'
-    rxJavaCallAdapterVersion = '2.3.0'
     crashlyticsVersion = '2.9.3'
 
     //Testing
@@ -39,6 +36,8 @@ ext {
 
     //Kotlin
     kodeinVersion = '6.1.0'
+    coroutinesVersion = '1.1.1'
+    coroutinesAdapterVersion = '0.9.2'
 
     applicationDependencies = [
             appCompat               : "androidx.appcompat:appcompat:${androidxVersion}",
@@ -46,12 +45,12 @@ ext {
             design                  : "com.google.android.material:material:${androidxVersion}",
             kodein                  : "org.kodein.di:kodein-di-generic-jvm:${kodeinVersion}",
             kodeinAndroid           : "org.kodein.di:kodein-di-framework-android-x:${kodeinVersion}",
-            rxJava                  : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-            rxAndroid               : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
             glide                   : "com.github.bumptech.glide:glide:${glideVersion}",
             glideAnnotationProcessor: "com.github.bumptech.glide:compiler:${glideVersion}",
             permissions             : "pub.devrel:easypermissions:${permissionsVersion}",
-            crashlytics             : "com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}@aar"
+            crashlytics             : "com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}@aar",
+            coroutines              : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion}",
+            coroutinesAndroid       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesVersion}"
     ]
 
     applicationTestDependencies = [
@@ -70,9 +69,7 @@ ext {
             retrofitGson      : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
             okthttp           : "com.squareup.okhttp3:okhttp:${okthttpVersion}",
             loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${okthttpVersion}",
-            rxJavaCallAdapter : "com.squareup.retrofit2:adapter-rxjava2:${rxJavaCallAdapterVersion}",
-            rxJava            : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-            rxAndroid         : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
+            coroutinesAdapter : "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${coroutinesAdapterVersion}"
     ]
 
     dataTestDependencies = [
@@ -81,7 +78,7 @@ ext {
     ]
 
     domainDependencies = [
-            rxJava: "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
+
     ]
 
     domainTestDependencies = [

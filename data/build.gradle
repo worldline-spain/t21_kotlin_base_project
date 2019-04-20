@@ -38,9 +38,7 @@ dependencies {
     implementation dataDependencies.retrofitGson
     implementation dataDependencies.okthttp
     implementation dataDependencies.loggingInterceptor
-
-    implementation dataDependencies.rxJava
-    implementation dataDependencies.rxJavaCallAdapter
+    implementation dataDependencies.coroutinesAdapter
 
     testImplementation dataTestDependencies.jUnit
     testImplementation dataTestDependencies.mockito
