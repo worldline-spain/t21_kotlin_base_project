@@ -42,7 +42,7 @@ dependencies {
 
     implementation appDependencies.kodein
     implementation appDependencies.kodeinAndroid
-    
+
     implementation appDependencies.coroutines
     implementation appDependencies.coroutinesAndroid
 

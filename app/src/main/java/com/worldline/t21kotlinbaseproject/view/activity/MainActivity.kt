@@ -1,18 +1,19 @@
 package com.worldline.t21kotlinbaseproject.view.activity
 
-import android.support.v7.widget.GridLayoutManager
 import android.view.View
-import com.github.salomonbrys.kodein.Kodein.Module
-import com.github.salomonbrys.kodein.bind
-import com.github.salomonbrys.kodein.instance
-import com.github.salomonbrys.kodein.provider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.worldline.t21kotlinbaseproject.R
+import com.worldline.t21kotlinbaseproject.di.ACTIVITY_MODULE
 import com.worldline.t21kotlinbaseproject.extension.toast
 import com.worldline.t21kotlinbaseproject.model.CategoryType
 import com.worldline.t21kotlinbaseproject.model.CategoryView
 import com.worldline.t21kotlinbaseproject.presenter.MainPresenter
 import com.worldline.t21kotlinbaseproject.view.adapter.CategoriesAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import org.kodein.di.Kodein
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.instance
+import org.kodein.di.generic.provider
 
 /**
  * MainActivity.
@@ -29,7 +30,7 @@ class MainActivity : RootActivity<MainPresenter.View>(), MainPresenter.View {
 
     override val layoutResourceId: Int = R.layout.activity_main
 
-    override val activityModule: Module = Module {
+    override val activityModule: Kodein.Module = Kodein.Module(ACTIVITY_MODULE) {
         bind<MainPresenter>() with provider {
             MainPresenter(view = this@MainActivity,
                     errorHandler = instance())
