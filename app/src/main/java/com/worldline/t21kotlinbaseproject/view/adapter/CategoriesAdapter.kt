@@ -1,7 +1,7 @@
 package com.worldline.t21kotlinbaseproject.view.adapter
 
-import android.support.v4.content.ContextCompat
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.worldline.t21kotlinbaseproject.R
 import com.worldline.t21kotlinbaseproject.model.CategoryView
 import kotlinx.android.synthetic.main.item_category.view.*
