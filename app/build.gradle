@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
@@ -11,6 +12,9 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    dataBinding {
+        enabled true
     }
     buildTypes {
         debug {
@@ -45,6 +49,8 @@ dependencies {
 
     implementation appDependencies.coroutines
     implementation appDependencies.coroutinesAndroid
+
+    implementation appDependencies.lifecycleExtension
 
     testImplementation appTestDependencies.jUnit
     testImplementation appTestDependencies.mockito

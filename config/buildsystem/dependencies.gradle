@@ -20,6 +20,7 @@ ext {
     androidxVersion = '1.0.0'
     glideVersion = '4.7.1'
     permissionsVersion = '3.0.0'
+    lifecycleExtensionVersion = '2.0.0'
 
     //Frameworks
     retrofitVersion = '2.3.0'
@@ -50,7 +51,8 @@ ext {
             permissions             : "pub.devrel:easypermissions:${permissionsVersion}",
             crashlytics             : "com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}@aar",
             coroutines              : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion}",
-            coroutinesAndroid       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesVersion}"
+            coroutinesAndroid       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesVersion}",
+            lifecycleExtension      : "androidx.lifecycle:lifecycle-extensions:${lifecycleExtensionVersion}"
     ]
 
     applicationTestDependencies = [
